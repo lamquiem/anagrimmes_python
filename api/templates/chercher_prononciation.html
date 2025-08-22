@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chercher Prononciation</title>
+</head>
+<body>
+    <h1>Chercher Prononciation</h1>
+    <form action="/chercher_prononciation" method="post">
+        <input type="text" name="prononciation" value="{{ query }}" placeholder="Entrez la prononciation">
+        <button type="submit">Rechercher</button>
+    </form>
+    {% if results %}
+    <table>
+        <thead><tr><th>Mot</th><th>Prononciation</th></tr></thead>
+        <tbody>
+            {% for row in results %}
+            <tr>
+                <td>{{ row['mot'] }}</td>
+                <td>{{ row['pron'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+</html>
